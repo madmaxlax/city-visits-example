@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myapp" ng-controller="appController as ctrlr">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="shortcut icon" href="https://glitch.com/edit/favicon.ico?v=3">
+  <title>RV Assignment User Visits</title>
+
+  <meta name="keywords" content="Site description" />
+  <meta name="description" content="key words" />
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">-->
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+  <link rel="stylesheet" type="text/css" href="./style.css" />
+</head>
+
+<body>
+  <md-toolbar layout="row" class="md-toolbar-tools" ng-cloak layout-align="space-between center">
+    <h1>RV Assignment: City Visits API</h1>
+    <md-button class="menu md-icon-button" hide-gt-xs ng-click="toggleLeft()" aria-label="Show Nav">
+      <md-icon aria-label="settings" class="material-icons">settings</md-icon>
+    </md-button>
+  </md-toolbar>
+  <div flex layout="row" ng-cloak>
+    <!--main content-->
+    <!-- Side Nav Prefs -->
+    <md-sidenav class="md-sidenav-left" md-is-locked-open="$mdMedia('gt-xs')" md-component-id="left">
+      <md-content class="md-padding">
+        <md-list>
+          <md-subheader class="">Menu</md-subheader>
+          <md-list-item>
+            Select A User
+            <br/>
+            <md-input-container>
+              <md-select ng-model="currentSelectedUser" ng-change="newUserSelected()">
+                <md-option ng-repeat="user in allUsers" ng-value="user">{{user.FirstName}} {{user.LastName}}</md-option>
+              </md-select>
+            </md-input-container>
+          </md-list-item>
+          <md-list-item>
+            Selected User Info:
+          </md-list-item>
+
+          <md-divider></md-divider>
+          <md-list-item ng-hide="currentSelectedUser">
+              No User Selected
+          </md-list-item>
+          <md-list-item ng-show="currentSelectedUser">
+              First: {{currentSelectedUser.FirstName}} <br/>
+              Last: {{currentSelectedUser.LastName}} <br/>
+              User Add Date: {{currentSelectedUser.DateTimeAdded | date:'MMM dd yyyy'}} <br/>
+              States visited: {{currentSelectedUser.StatesVisited.length}} <br/>
+          </md-list-item>
+        </md-list>
+      </md-content>
+    </md-sidenav>
+    <div layout="column" flex>
+      <md-card>
+<!--         <img ng-src="https://via.placeholder.com/350x150" class="md-card-image" alt="Washed Out"> -->
+        <div id="map">
+          <div id="google-maps-loading-text">
+            Loading Google Maps
+          </div>
+        </div>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline" ng-hide="currentSelectedUser">
+              No User Selected
+            </span>
+            <span class="md-headline" ng-show="currentSelectedUser">
+              {{currentSelectedUser.FirstName+ ' ' + currentSelectedUser.LastName}}'s Visits: {{currentSelectedUser.Visits.length}}</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content  ng-show="currentSelectedUser">
+          <p>
+<!--             Visits: {{currentSelectedUser.Visits}} -->
+            Add a visit?
+            <br/>
+            Choose a state: 
+            <md-input-container>
+              <md-select ng-model="currentSelectedState" ng-change="stateSelected()">
+                <md-option ng-repeat="state in allStates" ng-value="state">{{state}}</md-option>
+              </md-select>
+            </md-input-container> 
+            <br/>
+            <md-input-container>
+              <md-select ng-model="currentSelectedCity" ng-change="">
+                <md-option ng-repeat="city in currentCities" ng-value="city">{{city.Name}} </md-option>
+              </md-select>
+            </md-input-container> 
+            {{currentCities.length?currentCities.length:0}} cities found <span ng-show="currentCities.length===0">Note: only the first 3 states are set up in the db with cities...</span>
+            <br/>
+            <md-button class="md-raised" ng-disabled="!currentSelectedCity" ng-click="createVisit(currentSelectedUser.user_id,currentSelectedCity.Name,currentSelectedCity.ST)">Create Visit!</md-button>
+          </p>
+
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          
+        </md-card-actions>
+      </md-card>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- <script src="./scripts/bootstrap.min.js"></script> -->
+  
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8svpjN8LadBufM4XNk8uPARCGaJ3aFrs"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+  <script src="./app.js"></script>
+</body>
+
+</html>

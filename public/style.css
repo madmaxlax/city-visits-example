@@ -1,0 +1,10 @@
+#map{
+  min-height:400px;
+  height: 60%;
+  width:100%;
+}
+
+#google-maps-loading-text{
+  width:50%;
+  margin:auto;
+}
