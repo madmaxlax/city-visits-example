@@ -1,6 +1,10 @@
-City Visits API Assignment for RV 
+City Visits API Assignment
 =================
 
+Quick little app I made as an assignment, was kind of fun. 
+Making an API backend with a little angularJS front end
+uses NodeJS, Express, SQLite, AngularJS
+Hosted by Glitch
 
 ### [https://github.com/RedVentures22/rest-api-project-madmaxlax](https://github.com/RedVentures22/rest-api-project-madmaxlax)
 
