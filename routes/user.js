@@ -16,7 +16,7 @@ router.route('/')
           }
           else{
             if(rows.length > 0){
-               response.json(rows); 
+               response.json(rows.slice(0,global.MAX_RETURN_VALS)); 
               }
               else
               {
@@ -42,7 +42,7 @@ router.route('/:userid/visits')
           }
           else{
             if(rows.length > 0){
-               response.json(rows); 
+               response.json(rows.slice(0,global.MAX_RETURN_VALS)); 
               }
               else //no visits found, check if user exists
               {
@@ -143,7 +143,7 @@ router.route('/:userid/visits/states')
     'FROM City INNER JOIN Visits ON Visits.city_id = City.city_id '+
         'INNER JOIN Users ON Visits.user_id = Users.user_id '+
         'INNER JOIN State ON State.state_id = City.StateID '+
-        'GROUP BY State.Name HAVING Users.user_id = ?';
+        'WHERE Users.user_id = ? GROUP BY State.Name ';
     global.db.all(query, [userID], function(err, rows) {
       if (err) {
             console.error('Error with query ' + err.message);
@@ -151,7 +151,7 @@ router.route('/:userid/visits/states')
           }
           else{
             if(rows.length > 0){
-               response.json(rows); 
+               response.json(rows.slice(0,global.MAX_RETURN_VALS)); 
               }
               else //no visits found, check if user exists
               {

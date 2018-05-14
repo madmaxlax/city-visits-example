@@ -51,6 +51,21 @@ function deleteVisit(userID, visitID){
       });
       }
       
+      //function to reset the databases
+      $scope.resetDatabase = function(){
+        if(confirm('This will delete all visits. Are you sure?')){
+          if(confirm('Are you really sure?')){
+              $http.delete('./resettables').
+              then(function(data, status, headers, config) {
+                alert('Tables reset. Refreshing page');
+                location.reload();
+              }).catch(function(data, status, headers, config) {
+              console.log("Error deleting tables" , status,data);
+            });
+          }
+        }
+      }
+      
       //get users
       $http.get('./user/').
         then(function(data, status, headers, config) {
