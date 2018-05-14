@@ -3,6 +3,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" href="https://glitch.com/edit/favicon.ico?v=3">
   <title>RV Assignment User Visits</title>
 
@@ -52,6 +53,29 @@
               Last: {{currentSelectedUser.LastName}} <br/>
               User Add Date: {{currentSelectedUser.DateTimeAdded | date:'MMM dd yyyy'}} <br/>
               States visited: {{currentSelectedUser.StatesVisited.length}} <br/>
+          </md-list-item>
+          <md-list-item>
+          <br/>
+          </md-list-item>
+          <md-divider></md-divider>
+          <md-subheader class="">Debugging</md-subheader>
+          <md-list-item>
+              <md-button class="md-raised md-warn" ng-click="resetDatabase()" aria-label="reset">
+                Reset Database
+                <md-tooltip md-direction="top">Warning, this will reset the tables and delete all visit info</md-tooltip>
+              </md-button>
+          </md-list-item>
+          <md-divider></md-divider>
+          <md-list-item>
+            <md-button class="md-raised" href="https://github.com/madmaxlax/city-visits-example" target="_blank">
+              <md-icon aria-label="github" class="material-icons">code</md-icon> This on GitHub
+            </md-button>
+          </md-list-item>
+          <md-list-item>
+            <a href="http://maxstruever.com" target="_blank">Max Struever</a>
+          </md-list-item>
+          <md-list-item>
+            <a href="https://glitch.com" target="_blank">Made with Glitch</a>
           </md-list-item>
         </md-list>
       </md-content>

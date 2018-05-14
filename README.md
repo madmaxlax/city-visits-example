@@ -1,12 +1,9 @@
-City Visits API Assignment
+City Visits API Assignment for RV 
 =================
 
-Quick little app I made as an assignment, was kind of fun. 
-Making an API backend with a little angularJS front end
-uses NodeJS, Express, SQLite, AngularJS
-Hosted by Glitch
+## Hosted and Live at [https://rv-city-visits-api.glitch.me/](https://rv-city-visits-api.glitch.me/)
 
-### [https://github.com/RedVentures22/rest-api-project-madmaxlax](https://github.com/RedVentures22/rest-api-project-madmaxlax)
+#### [https://github.com/RedVentures22/rest-api-project-madmaxlax](https://github.com/RedVentures22/rest-api-project-madmaxlax)
 
 **Extra Endpoints**
 
@@ -15,7 +12,22 @@ Hosted by Glitch
  - `ANY /resettables`
    - resets the databases for Users, Cities, States and empties the visits table
 
+**Error Handling**
 
+ - I added catches for a lot of little errors when users are submitting or making other requests
+ 
+ **Data cap**
+ 
+  - I capped return counts at 500 for now. Should be plenty unless you're making tons of visit entries per user. Ideally we would do some sort of paging, but for this quick assignment it didn't seem necessary 
+  
+  
+**How to install**
+ 
+  - This is a pretty basic NodeJS implementation. It will set up a local SQLite database file to store the info. If you are running it locally, do a `npm install` to install the couple of modules I used and then something to host it like `http-start`
+  - the 
+  - But, I've been a huge fan of this site called Glitch for getting quick apps up and running and hosted, and that's where I have a copy of this app right now: check out the live front end to view and add and delete visits 
+  [https://rv-city-visits-api.glitch.me/](https://rv-city-visits-api.glitch.me/)
+  
 ------
 
 # RV Coding Challenge

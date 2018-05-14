@@ -28,7 +28,7 @@ router.route('/:state/cities').get(function(request, response) {
 
     else{
       if(rows.length > 0){
-         response.json(rows); 
+         response.json(rows.slice(0,global.MAX_RETURN_VALS)); 
         }
         else
         {
