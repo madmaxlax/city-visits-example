@@ -12,7 +12,7 @@
   "dependencies": {
     "express": "^4.16.3",
     "sqlite3": "^4.0.0",
-    "csv-parse": "^2.2.0"
+    "csv-parse": "^4.6.3"
   },
   "engines": {
     "node": "8.x"
